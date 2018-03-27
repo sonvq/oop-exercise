@@ -1,12 +1,13 @@
 <?php
 
 namespace Shipping\Services;
+use Shipping\Model\Order;
 
 Class ShippingService {
 
     private $grossPrice = 0;
 
-    public function calculateGrossPrice($order, $feeMethods = []) {
+    public function calculateGrossPrice(Order $order, $feeMethods = []) {
         // If order contains at least one product, then gross price is the sum of each product's price
         if (count($order->getProducts()) > 0) {
             foreach ($order->getProducts() as $singleProduct) {
