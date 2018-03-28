@@ -5,18 +5,21 @@ namespace Shipping\Model;
 use Shipping\Model\Interfaces\Fee;
 use Shipping\Model\Product;
 
-/*
+/**
  * A class to calculate the shipping fee of product base on its type
  * 
  * @class FeeByProductType
  */
 class FeeByProductType implements Fee {
 
+    /**
+     * Constructor
+     */
     public function __construct() {
         
     }
 
-    /*
+    /**
      * The implementation has not been done yet, but this is an example of
      * how new fee type will be created
      * 

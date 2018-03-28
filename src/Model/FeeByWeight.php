@@ -5,7 +5,7 @@ namespace Shipping\Model;
 use Shipping\Model\Product;
 use Shipping\Model\Interfaces\Fee;
 
-/*
+/**
  * A class to calculate the shipping fee of product base on its weight
  * 
  * @class FeeByWeight
@@ -13,14 +13,14 @@ use Shipping\Model\Interfaces\Fee;
 class FeeByWeight implements Fee {
 
     /**
-	 * Configurable weightCoefficient
+     * Configurable weightCoefficient
      * Example coefficients: weight_coefficient: $11/kg 
-	 *
-	 * @var float $weightCoefficient
-	 */
+     *
+     * @var float $weightCoefficient
+     */
     private $weightCoefficient;
 
-    /*
+    /**
      * Getter
      * 
      * @return float $weightCoefficient
@@ -29,7 +29,7 @@ class FeeByWeight implements Fee {
         return $this->weightCoefficient;
     }
 
-    /*
+    /**
      * Setter
      * 
      * @param float $weightCoefficient
@@ -38,8 +38,8 @@ class FeeByWeight implements Fee {
         $this->weightCoefficient = $weightCoefficient;
     }
 
-    /*
-     * Contructor
+    /**
+     * Constructor
      * 
      * @param float $weightCoefficient default is 11
      */
@@ -47,7 +47,7 @@ class FeeByWeight implements Fee {
         $this->weightCoefficient = $weightCoefficient;
     }
 
-    /*
+    /**
      * fee_by_weight = product_weight x weight_coefficient 
      * 
      * @param Product $product

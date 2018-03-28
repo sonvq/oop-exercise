@@ -1,12 +1,32 @@
 <?php
 
 namespace Shipping\Services;
+
 use Shipping\Model\Order;
 
+/**
+ * A class to calculate the gross price of an order (an order may contain many products)
+ * 
+ * @class ShippingService
+ */
 Class ShippingService {
 
+    /**
+     * Default grossPrice of an order is $0
+     *
+     * @var float $grossPrice
+     */
     private $grossPrice = 0;
 
+    /**
+     * Function calculation
+     * Gross price = SUM (price of each product base on feeMethods)
+     * 
+     * @param Order $order
+     * @param array $feeMethods
+     * 
+     * @return float grossPrice - gross price of order
+     */
     public function calculateGrossPrice(Order $order, $feeMethods = []) {
         // If order contains at least one product, then gross price is the sum of each product's price
         if (count($order->getProducts()) > 0) {

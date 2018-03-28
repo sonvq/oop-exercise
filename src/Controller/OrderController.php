@@ -6,8 +6,17 @@ use Shipping\Model\Product;
 use Shipping\Model\Order;
 use Shipping\Services\ShippingService;
 
+/**
+ * Order controller to call shippingService to calculate gross price of an order
+ * 
+ * @class OrderController
+ */
 class OrderController {
 
+    /**
+     * Index action
+     *    
+     */
     public function index() {
 
         /*
@@ -22,14 +31,14 @@ class OrderController {
             'Shipping\Model\FeeByDimension' => 11,
             'Shipping\Model\FeeByWeight' => 11,
             'Shipping\Model\FeeByProductType' => [],
-            // 'Shipping\Model\FeeByWhatever' => 17,
-            // ...others fee type go here
+                // 'Shipping\Model\FeeByWhatever' => 17,
+                // ...others fee type go here
         ];
 
         /*
          * Create some example products
          * Product($weight, $width, $height, $depth, $amazonPrice)
-         */        
+         */
         $product1 = new Product(1, 1.1, 0.21, 0.13, 14);
         $product2 = new Product(2, 1.3, 3.1, 0.13, 10);
         $product3 = new Product(0.5, 2.3, 0.31, 0.13, 9);
@@ -41,14 +50,14 @@ class OrderController {
 
         // Add product 4 to the existing order
         $order->addProducts($product4);
-        
+
         // Remove product 3 from the existing order
         $order->removeProducts($product3);
-        
+
         // Initial the shipping service to calculate order gross price
         $shippingFeeService = new ShippingService();
         $shippingPrice = $shippingFeeService->calculateGrossPrice($order, $feeMethods);
-        
+
         // Output the order gross price to the screen
         echo 'Order\'s gross price is: $' . $shippingPrice;
     }

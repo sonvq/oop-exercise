@@ -5,7 +5,7 @@ namespace Shipping\Model;
 use Shipping\Model\Interfaces\Fee;
 use Shipping\Model\Product;
 
-/*
+/**
  * A class to calculate the shipping fee of product base on its Dimension
  * 
  * @class FeeByDimension
@@ -13,14 +13,14 @@ use Shipping\Model\Product;
 class FeeByDimension implements Fee {
 
     /**
-	 * Configurable dimensionCoefficient
+     * Configurable dimensionCoefficient
      * Example coefficients: dimension_coefficient: $11/m3 
-	 *
-	 * @var float $dimensionCoefficient
-	 */
+     *
+     * @var float $dimensionCoefficient
+     */
     private $dimensionCoefficient;
 
-    /*
+    /**
      * Getter
      * 
      * @return float $dimensionCoefficient
@@ -29,7 +29,7 @@ class FeeByDimension implements Fee {
         return $this->dimensionCoefficient;
     }
 
-    /*
+    /**
      * Setter
      * 
      * @param float $dimensionCoefficient
@@ -38,8 +38,8 @@ class FeeByDimension implements Fee {
         $this->dimensionCoefficient = $dimensionCoefficient;
     }
 
-    /*
-     * Contructor
+    /**
+     * Constructor
      * 
      * @param float $dimensionCoefficient default is 11
      */
@@ -47,7 +47,7 @@ class FeeByDimension implements Fee {
         $this->dimensionCoefficient = $dimensionCoefficient;
     }
 
-    /*
+    /**
      * fee_by_dimension = width x height x depth x dimension_coefficient 
      * 
      * @param Product $product
