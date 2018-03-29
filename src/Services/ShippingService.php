@@ -17,8 +17,26 @@ Class ShippingService {
      * @var float $grossPrice
      */
     private $grossPrice = 0;
+    
+    /**
+     * GETTER
+     * 
+     * @return float $grossPrice
+     */
+    function getGrossPrice() {
+        return $this->grossPrice;
+    }
 
     /**
+     * SETTER
+     * 
+     * @param float $grossPrice
+     */
+    function setGrossPrice($grossPrice) {
+        $this->grossPrice = $grossPrice;
+    }
+
+        /**
      * Function calculation
      * Gross price = SUM (price of each product base on feeMethods)
      * 
@@ -32,8 +50,8 @@ Class ShippingService {
         if (count($order->getProducts()) > 0) {
             foreach ($order->getProducts() as $singleProduct) {
                 // Find the max value of all fee methods for each product
-                if (count($feeMethods) > 0) {
-                    $arrFee = [];
+                $arrFee = [];
+                if (count($feeMethods) > 0) {                    
                     foreach ($feeMethods as $feeClass => $defaultValue) {
                         $feeObject = new $feeClass($defaultValue);
                         $feePrice = $feeObject->feeCalculation($singleProduct);
